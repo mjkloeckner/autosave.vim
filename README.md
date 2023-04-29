@@ -35,7 +35,7 @@ Plug 'mjkloeckner/autosave.vim'
   You can change the default wait time to trigger CursorHold with:
 
   ```vim
-  set updatetime = 1000 " set updatetime to 1 s (the default is 4 seconds)
+  set updatetime = 1000 " set updatetime to 1 second (the default is 4)
   ```
 
   Note that a very low value may impact Vim performance.
