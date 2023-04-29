@@ -9,7 +9,7 @@ If you are using [vim-plug](https://github.com/junegunn/vim-plug) add this to
 your plugins list:
 
 ```vim
-Plug 'chrisbra/Colorizer'
+Plug 'mjkloeckner/autosave.vim'
 ```
 
 ## Options
