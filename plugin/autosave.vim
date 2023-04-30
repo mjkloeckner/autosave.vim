@@ -16,15 +16,10 @@ function s:auto_save()
 			let s:auto_save_write = 0
 			if &modified
 				let l:bytes = line2byte('$') + len(getline('$'))
-				if filereadable(expand('%:p')) == 1
-					silent! write
-					echo "\"" .. expand('%') .. "\" " .. line('$') .. "L, " ..
-								\ l:bytes .. "B written [autosave]"
-				else
-					silent! write
-					echo "\"" .. expand('%') .. "\" [New] " .. line('$') ..
-								\"L, " .. l:bytes .. "B written [autosave]"
-				endif
+				let l:newfile = filereadable(expand('%:p')) ? "" : "[New] "
+				silent! write
+				echo "\"" .. expand('%') .. "\" " .. l:newfile .. line('$')
+							\.. "L, " .. l:bytes .. "B written [autosave]"
 			endif
 		endif
 	endif
