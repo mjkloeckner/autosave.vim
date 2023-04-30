@@ -19,7 +19,7 @@ Plug 'mjkloeckner/autosave.vim'
 - Enable autosave for only these filetypes
 
   ```vim
-  let g:auto_save_file_types = [ 'markdown' ]
+  let g:auto_save_filetypes = [ 'markdown' ]
   ```
 
   To see all posible filetypes see:

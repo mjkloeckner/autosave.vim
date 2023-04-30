@@ -1,6 +1,6 @@
 " default filetypes
-if !exists('g:auto_save_file_types')
-	let g:auto_save_file_types = [ 'markdown', 'text' ]
+if !exists('g:auto_save_filetypes')
+	let g:auto_save_filetypes = [ 'markdown', 'text' ]
 endif
 
 let s:auto_save_filetype_enabled = 0
@@ -29,5 +29,5 @@ endfunction
 au TextChanged,TextChangedI <buffer> silent! let s:auto_save_write = 1
 au CursorHold,CursorHoldI <buffer> call s:auto_save()
 
-au BufEnter,FileType * if index(g:auto_save_file_types, &filetype) !=# -1 |
+au BufEnter,FileType * if index(g:auto_save_filetypes, &filetype) !=# -1 |
 			\ let s:auto_save_filetype_enabled = 1 | endif
