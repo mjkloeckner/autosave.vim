@@ -3,6 +3,10 @@ if !exists('g:auto_save_filetypes')
 	let g:auto_save_filetypes = [ 'markdown', 'text' ]
 endif
 
+if !exists('g:auto_save_all_filetypes')
+	let g:auto_save_all_filetypes = 0
+endif
+
 let s:auto_save_filetype_enabled = 0
 let s:auto_save_write = 0
 
