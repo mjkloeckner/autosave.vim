@@ -25,8 +25,15 @@ function s:auto_save()
 	endif
 endfunction
 
-au TextChanged,TextChangedI <buffer> silent! let s:auto_save_write = 1
-au CursorHold,CursorHoldI <buffer> call s:auto_save()
+function s:autosave_current_buffer_enable()
+	let s:auto_save_filetype_enabled = 1
+	au TextChanged,TextChangedI <buffer> silent! let s:auto_save_write = 1
+	au CursorHold,CursorHoldI <buffer> call s:auto_save()
+endfunction
 
-au BufEnter,FileType * if index(g:auto_save_filetypes, &filetype) !=# -1 |
-			\ let s:auto_save_filetype_enabled = 1 | endif
+if g:auto_save_all_filetypes == 0
+	au BufEnter,FileType * if index(g:auto_save_filetypes, &filetype) !=# -1 |
+				\ call s:autosave_current_buffer_enable() | endif
+else
+	au BufEnter,FileType * call s:autosave_current_buffer_enable()
+endif
