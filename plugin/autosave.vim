@@ -27,8 +27,17 @@ function s:auto_save()
 				endif
 
 				silent! write
-				echo "\"" .. rel_filename .. "\" " .. l:newfile .. line('$') 
+				let l:echo_message = "\"" .. rel_filename .. "\" " .. l:newfile .. line('$') 
 							\.. "L, " .. l:bytes .. "B written [autosave]"
+
+				let l:echo_message_len = len(l:echo_message)
+				if (v:echospace - echo_message_len) < 0
+					let l:echo_message = l:echo_message[echo_message_len - v:echospace + 1: echo_message_len]
+					let l:echo_message = substitute(l:echo_message, '^.', '<', '')
+				endif
+
+				echo l:echo_message
+
 			endif
 		endif
 	endif
