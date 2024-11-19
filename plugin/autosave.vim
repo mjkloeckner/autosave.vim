@@ -23,21 +23,20 @@ function s:auto_save()
 				if l:filename =~ '^' . l:home
 					let l:rel_filename = substitute(l:filename, l:home, '~', '')
 				else
-					let rel_filename = l:filename
+					let l:rel_filename = l:filename
 				endif
 
 				silent! write
-				let l:echo_message = "\"" .. rel_filename .. "\" " .. l:newfile .. line('$') 
-							\.. "L, " .. l:bytes .. "B written [autosave]"
+				let l:echo_msg = "\"" .. rel_filename .. "\" " .. l:newfile
+							\ .. line('$') .. "L, " .. l:bytes .. "B written [autosave]"
 
-				let l:echo_message_len = len(l:echo_message)
-				if (v:echospace - echo_message_len) < 0
-					let l:echo_message = l:echo_message[echo_message_len - v:echospace + 1: echo_message_len]
-					let l:echo_message = substitute(l:echo_message, '^.', '<', '')
+				let l:echo_msg_len = len(l:echo_msg)
+				if (v:echospace - l:echo_msg_len) < 0
+					let l:echo_msg = l:echo_msg[l:echo_msg_len - v:echospace + 1: l:echo_msg_len]
+					let l:echo_msg = substitute(l:echo_msg, '^.', '<', '')
 				endif
 
-				echo l:echo_message
-
+				echo l:echo_msg
 			endif
 		endif
 	endif
